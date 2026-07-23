@@ -51,3 +51,4 @@ uv run poe cqa
 3. [Pylint > Pre-commit integration](https://pylint.pycqa.org/en/stable/user_guide/installation/pre-commit-integration.html)
 4. [Ultimate pre-commit Configuration for Python](https://www.hrekov.com/blog/pre-commit-configuration-python)
 5. [How to Use Poe the Poet as a Task Runner with uv](https://pydevtools.com/handbook/how-to/how-to-use-poe-the-poet-as-a-task-runner-with-uv/)
+6. [commitizen > Pre-commit Integration](https://github.com/commitizen-tools/commitizen?tab=readme-ov-file#pre-commit-integration)

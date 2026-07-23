@@ -29,6 +29,9 @@ disable = [
 
 [tool.black]
 
+[tool.commitizen]
+name = "cz_conventional_commits"
+
 [tool.poe.tasks]
 pre-commit-install = "pre-commit install --hook-type commit-msg --hook-type pre-push --hook-type pre-commit"
 echo = "echo Hello from poe!"

@@ -31,3 +31,13 @@ repos:
     rev: 25.9.0
     hooks:
       - id: black
+  - repo: https://github.com/commitizen-tools/commitizen
+    rev: v4.10.0
+    hooks:
+      - id: commitizen
+      - id: commitizen-branch
+        args:
+          [
+            "--allow-main"
+          ]
+        stages: [ pre-push ]

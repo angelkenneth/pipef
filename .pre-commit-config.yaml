@@ -35,9 +35,4 @@ repos:
     rev: v4.10.0
     hooks:
       - id: commitizen
-      - id: commitizen-branch
-        args:
-          [
-            "--allow-main"
-          ]
-        stages: [ pre-push ]
+        stages: [commit-msg]

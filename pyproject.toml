@@ -9,6 +9,7 @@ dependencies = []
 [dependency-groups]
 dev = [
     "black>=26.5.1",
+    "commitizen>=4.16.5",
     "flake8>=7.3.0",
     "poethepoet>=0.48.0",
     "pre-commit>=4.6.1",
@@ -35,6 +36,7 @@ name = "cz_conventional_commits"
 [tool.poe.tasks]
 pre-commit-install = "pre-commit install --hook-type commit-msg --hook-type pre-push --hook-type pre-commit"
 echo = "echo Hello from poe!"
+commit = "cz commit"
 
 [tool.poe.tasks.cqa]
 sequence = [

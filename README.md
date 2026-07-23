@@ -44,6 +44,14 @@ uv run poe cqa
 
 5. Done
 
+## Git Commit CLI
+
+See: [Commitizen > Create Commits](https://commitizen-tools.github.io/commitizen/#create-commits)
+
+```bash
+uv run poe commit
+```
+
 ## References
 
 1. [.gitignore](https://www.toptal.com/developers/gitignore?templates=node,python,intellij+all,macos,windows)
@@ -52,3 +60,4 @@ uv run poe cqa
 4. [Ultimate pre-commit Configuration for Python](https://www.hrekov.com/blog/pre-commit-configuration-python)
 5. [How to Use Poe the Poet as a Task Runner with uv](https://pydevtools.com/handbook/how-to/how-to-use-poe-the-poet-as-a-task-runner-with-uv/)
 6. [commitizen > Pre-commit Integration](https://github.com/commitizen-tools/commitizen?tab=readme-ov-file#pre-commit-integration)
+7. [Commitizen > Project-Specific Installation](https://commitizen-tools.github.io/commitizen/#project-specific-installation)

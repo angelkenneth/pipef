@@ -5,3 +5,36 @@ description = "Ad Hoc scripts, etc."
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = []
+
+[dependency-groups]
+dev = [
+    "black>=26.5.1",
+    "flake8>=7.3.0",
+    "poethepoet>=0.48.0",
+    "pre-commit>=4.6.1",
+    "pylint>=4.0.6",
+]
+
+[tool.pylint]
+ignore-paths = [
+    ".idea/",
+]
+disable = [
+    "missing-module-docstring",
+    "missing-class-docstring",
+    "missing-function-docstring",
+]
+
+# For Flake8 see: `.flake8`
+
+[tool.black]
+
+[tool.poe.tasks]
+pre-commit-install = "pre-commit install --hook-type commit-msg --hook-type pre-push --hook-type pre-commit"
+echo = "echo Hello from poe!"
+
+[tool.poe.tasks.cqa]
+sequence = [
+    {cmd = "pre-commit run --all-files"},
+    {cmd = "echo 'Code Quality Passed!'" }
+]

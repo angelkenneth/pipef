@@ -25,10 +25,12 @@ disable = [
     "missing-class-docstring",
     "missing-function-docstring",
 ]
+max-line-length = 120
 
 # For Flake8 see: `.flake8`
 
 [tool.black]
+line-length = 120
 
 [tool.commitizen]
 name = "cz_customize"

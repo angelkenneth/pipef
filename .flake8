@@ -3,6 +3,8 @@ extend-exclude =
     .idea/,
     .venv/,
 
+max-line-length = 120
+
 # compatible with Black
 extend-ignore =
     # https://www.flake8rules.com/rules/E203.html

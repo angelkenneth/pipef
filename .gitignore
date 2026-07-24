@@ -461,3 +461,6 @@ assorted-*
 input-*
 output-*
 service-account-aktolentino.json
+
+# Claude Code
+.claude/settings.local.json

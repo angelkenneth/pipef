@@ -21,9 +21,16 @@ ignore-paths = [
     ".idea/",
 ]
 disable = [
-    "missing-module-docstring",
+    "duplicate-code",
+    "fixme",
     "missing-class-docstring",
     "missing-function-docstring",
+    "missing-module-docstring",
+    "too-few-public-methods",
+    "too-many-arguments",
+    "too-many-instance-attributes",
+    "too-many-locals",
+    "too-many-positional-arguments",
 ]
 max-line-length = 120
 

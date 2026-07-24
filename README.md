@@ -12,7 +12,8 @@ Contains ad hoc scriupts, logs, etc.
 # Run after cloning
 asdf install && \
 uv sync && \
-uv run poe pre-commit-install
+uv run poe pre-commit-install && \
+cp .env.example .env
 
 # Run all Code Quality Assurance
 uv run poe cqa

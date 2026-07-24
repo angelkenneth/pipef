@@ -16,6 +16,9 @@ dev = [
     "pylint>=4.0.6",
 ]
 
+[tool.poe]
+envfile = ".env"
+
 [tool.pylint]
 ignore-paths = [
     ".idea/",
@@ -77,7 +80,7 @@ message = "Write a short and imperative summary of the code changes:\n"
 
 [tool.poe.tasks]
 pre-commit-install = "pre-commit install --hook-type commit-msg --hook-type pre-push --hook-type pre-commit"
-echo = "echo Hello from poe!"
+echo = "echo $GREETING"
 commit = "cz commit"
 
 [tool.poe.tasks.cqa]

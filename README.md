@@ -1,6 +1,9 @@
 ## Blank UV Project
 
-Contains ad hoc scriupts, logs, etc.
+Contains ad hoc scripts, logs, etc.
+
+Each script or experiment lives in its own package under `apps/` — `apps/sample` is the starting template.
+Tests sit beside the code they cover in `apps/<name>/tests/`, named `<module>_test.py`
 
 ## Prerequisites
 
@@ -14,6 +17,12 @@ asdf install && \
 uv sync && \
 uv run poe pre-commit-install && \
 cp .env.example .env
+
+# Running
+uv run poe sample
+
+# Tests only
+uv run poe test
 
 # Run all Code Quality Assurance
 uv run poe cqa
@@ -55,7 +64,7 @@ uv run poe commit
 
 ## References
 
-1. [.gitignore](https://www.toptal.com/developers/gitignore?templates=node,python,intellij+all,macos,windows)
+1. [.gitignore](https://www.toptal.com/developers/gitignore?templates=node,python,intellij+all,macos,visualstudiocode,windows)
 2. [Stylising your Python code: An introduction to linting and formatting](https://www.jumpingrivers.com/blog/python-linting-guide/)
 3. [Pylint > Pre-commit integration](https://pylint.pycqa.org/en/stable/user_guide/installation/pre-commit-integration.html)
 4. [Ultimate pre-commit Configuration for Python](https://www.hrekov.com/blog/pre-commit-configuration-python)

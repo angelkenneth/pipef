@@ -1,4 +1,5 @@
 def main():
+    """Prints the sandbox greeting"""
     print("Hello from sandbox!")
 
 

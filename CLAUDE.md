@@ -29,3 +29,5 @@ Commit messages follow `<type>(<ticket>): <summary>`, where `<ticket>` is a spac
 or `na-0` when no ticket applies. Prefer `uv run poe commit` over hand-writing the message
 
 Never run `git commit` unless the user explicitly tells you to commit in that turn. Staging, diffing, and preparing changes is fine without asking; committing is not
+
+Always `git add` any file you create or modify as soon as you're done with it, so nothing is left untracked or unstaged — the user stashes changes from PyCharm's IDE, which only picks up staged/tracked files by default

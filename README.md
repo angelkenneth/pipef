@@ -6,6 +6,9 @@
 
 Function pipelines for Python — chain callables with `|`, lazily as a reusable function or eagerly through a value
 
+`pipef` works as a double pun — pipe + function, but also pipe + forked, since each `|` in
+lazy mode forks a new immutable chain instead of mutating the old one
+
 ## Install
 
 ```bash

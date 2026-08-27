@@ -8,14 +8,13 @@ license-files = ["LICENSE.md"]
 authors = [
     { name = "Angel Kenneth Tolentino", email = "angelkennethtolentino@gmail.com" },
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 keywords = ["pipe", "pipeline", "compose", "functional"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -56,7 +55,7 @@ dev = [
     "tox>=4.21",
 ]
 
-# The library supports Python 3.9+, but the dev toolchain is resolved against the pinned interpreter only
+# The library supports Python 3.8+, but the dev toolchain is resolved against the pinned interpreter only
 [tool.uv.dependency-groups]
 dev = { requires-python = ">=3.14" }
 
@@ -83,19 +82,18 @@ disable = [
 ]
 max-line-length = 120
 # Flags syntax and stdlib newer than the supported floor
-py-version = "3.7"
+py-version = "3.8"
 
 # For Flake8 see: `.flake8`
 
 [tool.black]
 line-length = 120
-target-version = ["py37"]
+target-version = ["py38"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
 # Interpreters come from asdf shims — see `.tool-versions`; absent ones are skipped, not failed
-# 3.7 is absent on purpose — it is covered by the `test-floor` task instead
 [tool.tox]
 requires = ["tox>=4.21"]
 env_list = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
@@ -157,6 +155,7 @@ pre-commit-install = "pre-commit install --hook-type commit-msg --hook-type pre-
 echo = "echo $GREETING"
 commit = "cz commit"
 test = "pytest"
+test-all = "tox"
 bump = "cz bump"
 
 [tool.poe.tasks.clean]
@@ -174,19 +173,6 @@ sequence = [
 sequence = [
     {ref = "build"},
     {cmd = "uv publish"},
-]
-
-# tox cannot reach 3.7 — its interpreter probe uses 3.8+ syntax — so the floor is tested against the built wheel
-[tool.poe.tasks.test-floor]
-sequence = [
-    {ref = "build"},
-    {shell = "rm -rf .tox/floor && python3.7 -m venv .tox/floor && .tox/floor/bin/pip install -q dist/*.whl 'pytest<7.5' && .tox/floor/bin/python -m pytest"},
-]
-
-[tool.poe.tasks.test-all]
-sequence = [
-    {cmd = "tox"},
-    {ref = "test-floor"},
 ]
 
 [tool.poe.tasks.cqa]

@@ -8,7 +8,7 @@ The package lives in `src/pipef/`; it is distributed as a wheel + sdist built by
 The library itself stays dependency-free — runtime dependencies need a deliberate decision, so raise it
 before adding one. Tooling belongs in the `dev` dependency group
 
-The library supports Python 3.7+, but the `dev` group resolves against the pinned interpreter only
+The library supports Python 3.8+, but the `dev` group resolves against the pinned interpreter only
 (`[tool.uv.dependency-groups]`), so dev tooling may use newer syntax than the library can
 
 ## Code Style
@@ -19,8 +19,8 @@ All functions and classes in this repo require inline docs (a docstring or a com
 
 Don't end the last sentence of a paragraph with a period; sentences earlier in the paragraph still keep theirs
 
-Shipped code must stay compatible with Python 3.7 — no walrus operator, no positional-only params,
-no `importlib.metadata`, no builtin generics or `X | Y` unions outside `from __future__ import annotations`
+Shipped code must stay compatible with Python 3.8 — no builtin generics or `X | Y` unions outside
+`from __future__ import annotations`
 
 `pylint` enforces this via `py-version`, but it does not catch everything — `uv run poe test-all` does
 
@@ -28,11 +28,8 @@ no `importlib.metadata`, no builtin generics or `X | Y` unions outside `from __f
 
 Tests live in the top-level `tests/` package, named `<module>_test.py` after the module they cover
 
-`uv run poe test` runs them on the pinned interpreter; `uv run poe test-all` covers the whole support range —
-tox for 3.8+, then `test-floor` for 3.7
-
-3.7 needs its own task because tox's interpreter probe and `hatchling>=1.27` both require 3.8+, so 3.7 is
-tested against the built wheel rather than an sdist build
+`uv run poe test` runs them on the pinned interpreter; `uv run poe test-all` covers the whole support range
+via tox
 
 ## Versioning and Release
 

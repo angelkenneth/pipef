@@ -40,11 +40,8 @@ fn(2)
 
 Prerequisite: [asdf](https://asdf-vm.com/guide/getting-started.html)
 
-`pipef` supports Python 3.7+. `uv run poe test-all` runs the suite against every interpreter listed in
-`.tool-versions`, skipping the ones you have not installed — so a partial set is fine
-
-3.8+ runs under tox; 3.7 runs separately against the built wheel, because tox's interpreter probe itself
-needs 3.8+
+`pipef` supports Python 3.8+. `uv run poe test-all` runs the suite (via tox) against every interpreter
+listed in `.tool-versions`, skipping the ones you have not installed — so a partial set is fine
 
 ```bash
 # Run after cloning
@@ -57,7 +54,7 @@ cp .env.example .env
 # Tests on the pinned interpreter
 uv run poe test
 
-# Tests on every installed interpreter (tox 3.8+, plus the 3.7 floor)
+# Tests on every installed interpreter (3.8+, via tox)
 uv run poe test-all
 
 # Run all Code Quality Assurance

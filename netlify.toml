@@ -9,6 +9,13 @@ publish = "docs/_build/html"
 # here rather than the full 3.8-3.14 matrix .tool-versions lists for local tox runs
 MISE_ENV = "netlify"
 
+# Persists uv's package cache and mise's installed Python 3.14 across builds — without this every
+# build re-downloads dependencies and re-installs (sometimes source-compiles) the interpreter
+[[plugins]]
+package = "netlify-plugin-cache"
+[plugins.inputs]
+paths = ["~/.cache/uv", "~/.local/share/mise/installs/python/3.14"]
+
 # Force the default netlify.app subdomain to the custom domain — avoids duplicate-content SEO
 [[redirects]]
 from = "https://pipef.netlify.app/*"

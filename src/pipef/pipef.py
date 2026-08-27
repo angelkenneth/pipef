@@ -53,8 +53,8 @@ class pipef(metaclass=_PipefMeta):  # pylint: disable=invalid-name
         object.__setattr__(forked, "eager", False)
         return forked
 
-    # Frozen dataclasses hash by field value by default, but `kwargs` is a dict, so hashing would
-    # always blow up anyway — disable it outright rather than let that leak through as a surprise
+    #: Frozen dataclasses hash by field value by default, but `kwargs` is a dict, so hashing would
+    #: always blow up anyway — disable it outright rather than let that leak through as a surprise
     __hash__ = None  # type: ignore[assignment]
 
     @property

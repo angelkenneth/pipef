@@ -128,14 +128,17 @@ git push --follow-tags
 12. We use [twine](https://twine.readthedocs.io/) to check the built distribution before it's uploaded to
     PyPI
 13. We use [Sphinx](https://www.sphinx-doc.org/) with the
-    [Read the Docs theme](https://sphinx-rtd-theme.readthedocs.io/) and
-    [MyST](https://myst-parser.readthedocs.io/)
+    [Alabaster theme](https://alabaster.readthedocs.io/) — the same PyPA-style layout used by
+    [pipenv](https://pipenv.pypa.io/), [pip](https://pip.pypa.io/), and
+    [virtualenv](https://virtualenv.pypa.io/) — and [MyST](https://myst-parser.readthedocs.io/)
 
 ### Non-stack Decision
 
 Decision that we might have tried but later reverted or explicitly avoided
 
 1. We dropped Python 3.7 support because tox's own interpreter probe requires 3.8+ syntax
+2. We moved off the Read the Docs theme in favor of Alabaster, to match the layout PyPA packaging
+   tools (pipenv, pip, virtualenv) already use
 
 ## References
 

@@ -1,18 +1,52 @@
-# pipef
+# pipef: Function Pipelines for Python
 
-Function pipelines for Python — chain callables with `|`, lazily as a reusable function or eagerly through a
-value
+## What is pipef?
 
-`pipef` works as a double pun — pipe + function, but also pipe + forked, since each `|` in lazy mode forks
-a new immutable chain instead of mutating the old one
+`pipef` is a small, dependency-free library that chains callables with `|` instead of nesting
+them. One `|` operator covers two shapes: a reusable lazy function built once and called later, and
+an eager pipeline that pipes a value through immediately
 
-## Install
+`pipef` works as a double pun — pipe + function, but also pipe + forked, since each `|` in lazy mode
+forks a new immutable chain instead of mutating the old one
+
+Linux, macOS, and Windows are all first-class citizens, and so is every Python from 3.8 up
+
+## Why Use pipef
+
+See [Comparison](comparison.md) for the full survey against `pipetools`, `toolz`, `sspipe`, and
+others — in short:
+
+- **One operator, two shapes**: the same `|` builds a reusable lazy function (`pipef | f | g`) or
+  pipes a value eagerly (`pipef(x) | f | g`), instead of needing a different library for each
+- **Zero dependencies**: nothing else installs alongside it
+- **Shared computation in eager mode**: branching off an already-resolved eager chain reuses that
+  prefix's result instead of recomputing it per branch
+- **Multi-arg/kwarg seed**: `pipef(1, 2, c=3) | f` seeds a chain with more than one value up front,
+  which nothing surveyed in the comparison does
+
+None of this is a reason to migrate off a library that's already working for you — `pipef` is aimed
+at new code, or a project that wants both shapes without importing two libraries to get them
+
+## Key Features
+
+- **Lazy function factory**: `pipef | f | g` builds a reusable, forkable function
+- **Eager value pipeline**: `pipef(x) | f | g` applies each step immediately and hands back a result
+- **Immutable forking**: piping further off any chain, lazy or eager, always returns a fresh `pipef`
+  and leaves the original callable and unchanged
+- **Typed and dependency-free**: ships `py.typed`, works on Python 3.8 through 3.14, and pulls in
+  nothing else
+
+## Quick Start
+
+### Installation
 
 ```bash
 pip install pipef
 ```
 
-## Quick example
+See [Installing pipef](installing.md) for `uv`, Poetry, and Pipenv equivalents
+
+### Basic Usage
 
 ```python
 from pipef import pipef
@@ -22,28 +56,18 @@ fn(2)
 > 12
 ```
 
-See [Usage](usage.md) for the full lazy/eager walkthrough, or the [API Reference](api.md) for the
-generated class docs
-
-## Why pipef
-
-Advantages of `pipef` over the libraries surveyed in [Comparison](comparison.md):
-
-1. One `|` operator covers both a reusable lazy function (`pipef | f | g`) and an eager value pipeline
-   (`pipef(x) | f | g`), instead of needing a different library for each shape
-2. Zero dependencies
-3. Eager mode shares a branched prefix's computation once instead of recomputing it per branch
-4. Accepts a multi-arg/kwarg seed (`pipef(1, 2, c=3) | f`), which nothing surveyed does
-
-None of that is a reason to migrate off a library that's already working for you — if `pipetools`,
-`toolz`, `sspipe`, or similar already covers your pipeline, keep using it. `pipef` is aimed at new code,
-or a project that wants both shapes without importing two libraries to get them
+See [Quick Start](quickstart.md) for a slightly longer walkthrough, [Usage Guide](usage.md) for the
+full lazy/eager reference, or [API Reference](api.md) for the generated class docs
 
 ```{toctree}
 :maxdepth: 2
 :hidden:
 
+installing
+quickstart
 usage
 comparison
+faq
+troubleshooting
 api
 ```

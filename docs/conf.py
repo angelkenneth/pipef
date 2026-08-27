@@ -34,4 +34,19 @@ myst_heading_anchors = 3
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
-html_theme = "sphinx_rtd_theme"
+# Matches the PyPA-style layout (pip, pipenv, virtualenv): Alabaster theme, right-hand sidebar
+html_theme = "alabaster"
+html_theme_options = {
+    "description": "Function pipelines for Python — chain callables with |",
+    "github_user": "angelkenneth",
+    "github_repo": "pipef",
+    "github_button": True,
+    "github_type": "star",
+    "github_banner": False,
+    "show_powered_by": False,
+    "show_related": False,
+    "fixed_sidebar": True,
+}
+html_sidebars = {
+    "**": ["about.html", "navigation.html", "relations.html", "searchbox.html"],
+}

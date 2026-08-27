@@ -28,6 +28,18 @@ poetry add pipef
 pipenv install pipef
 ```
 
+> **PyPI account issue:** uploads are temporarily blocked while we recover the `pipef` PyPI account
+> (see [pypi/support#12019](https://github.com/pypi/support/issues/12019)). Until it's resolved, install
+> straight from git instead:
+>
+> ```bash
+> pip install git+https://github.com/angelkenneth/pipef.git
+> ```
+>
+> ```bash
+> uv add git+https://github.com/angelkenneth/pipef.git
+> ```
+
 ## Usage
 
 See more: [USAGE.md](USAGE.md)

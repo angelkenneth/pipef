@@ -2,10 +2,9 @@
 
 [![PyPI](https://img.shields.io/pypi/v/pipef.svg)](https://pypi.org/project/pipef/)
 [![Python](https://img.shields.io/pypi/pyversions/pipef.svg)](https://pypi.org/project/pipef/)
+[![License](https://img.shields.io/pypi/l/pipef.svg)](LICENSE.md)
 
-Function pipelines for Python — chain callables with `|` instead of nesting them
-
-> Early scaffolding: the package installs and imports, but the pipe API has not landed yet
+Function pipelines for Python — chain callables with `|`, lazily as a reusable function or eagerly through a value
 
 ## Install
 
@@ -13,12 +12,28 @@ Function pipelines for Python — chain callables with `|` instead of nesting th
 pip install pipef
 ```
 
+```bash
+uv add pipef
+```
+
+```bash
+poetry add pipef
+```
+
+```bash
+pipenv install pipef
+```
+
 ## Usage
 
-```python
-import pipef
+See more: [USAGE.md](USAGE.md)
 
-pipef.__version__
+```python
+from pipef import pipef
+
+fn = pipef | add_2 | mult_3
+fn(2)
+> 9
 ```
 
 ## Development

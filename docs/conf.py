@@ -53,6 +53,10 @@ html_theme_options = {
     "show_related": False,
     "fixed_sidebar": True,
     "extra_nav_links": {"Author's site": "https://www.aktolentino.com"},
+    # Matches aktolentino.com's body background color, replacing Alabaster's default white
+    "base_bg": "#F7F8FF",
+    # Transparent so the header pattern in custom.css shows through behind the article text
+    "body_bg": "transparent",
     # Matches aktolentino.com's body text color, replacing Alabaster's default #3E4349
     "body_text": "rgba(0, 0, 0, .87)",
     # Matches the "baby brown" accent (#C09D7F) from aktolentino.com, darkened for link contrast

@@ -1,4 +1,27 @@
 /* Alabaster doesn't style a:visited, so browsers default it to purple, overriding the baby brown accent from conf.py */
 a:visited {
-    color: #B28B6C;
+  color: #B28B6C;
+}
+
+/* Decorative header pattern covering the page's top 70% */
+body {
+  position: relative;
+}
+
+div.document {
+  margin-top: 0;
+  padding: 30px;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: max(70vh, 600px);
+  z-index: -1;
+  border-bottom: 1px dashed #d3baa5;
+  background-color: #F7F3F0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='72' viewBox='0 0 36 72'%3E%3Cg fill-rule='evenodd'%3E%3Cg fill='%23ece2d9' fill-opacity='0.4'%3E%3Cpath d='M2 6h12L8 18 2 6zm18 36h12l-6 12-6-12z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
 }

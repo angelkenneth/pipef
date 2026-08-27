@@ -36,6 +36,20 @@ fn(2)
 > 9
 ```
 
+## Why pipef
+
+Advantages of `pipef` over the libraries surveyed in [COMPARISON.md](COMPARISON.md):
+
+1. One `|` operator covers both a reusable lazy function (`pipef | f | g`) and an eager value pipeline
+   (`pipef(x) | f | g`), instead of needing a different library for each shape
+2. Zero dependencies
+3. Eager mode shares a branched prefix's computation once instead of recomputing it per branch
+4. Accepts a multi-arg/kwarg seed (`pipef(1, 2, c=3) | f`), which nothing surveyed does
+
+None of that is a reason to migrate off a library that's already working for you — if `pipetools`,
+`toolz`, `sspipe`, or similar already covers your pipeline, keep using it. `pipef` is aimed at new code,
+or a project that wants both shapes without importing two libraries to get them
+
 ## Development
 
 Prerequisite: [asdf](https://asdf-vm.com/guide/getting-started.html)

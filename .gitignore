@@ -471,15 +471,5 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,python,intellij+all,macos,visualstudiocode,windows
 
-# Databases
-.data/
-
-ad_hoc.*
-ad_hoc_*
-assorted-*
-input-*
-output-*
-service-account-aktolentino.json
-
 # Claude Code
 .claude/settings.local.json

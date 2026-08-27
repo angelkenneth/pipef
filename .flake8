@@ -2,6 +2,7 @@
 extend-exclude =
     .idea/,
     .venv/,
+    .tox/,
 
 max-line-length = 120
 

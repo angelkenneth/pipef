@@ -1,10 +1,48 @@
 [project]
-name = "sandbox"
-version = "0.1.0"
-description = "Ad Hoc scripts, etc."
+name = "pipef"
+version = "0.0.1"
+description = "Function pipelines for Python"
 readme = "README.md"
-requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE.md"]
+authors = [
+    { name = "Angel Kenneth Tolentino", email = "angelkennethtolentino@gmail.com" },
+]
+requires-python = ">=3.7"
+keywords = ["pipe", "pipeline", "compose", "functional"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Software Development :: Libraries",
+    "Typing :: Typed",
+]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/angelkenneth/pipef"
+Repository = "https://github.com/angelkenneth/pipef"
+Issues = "https://github.com/angelkenneth/pipef/issues"
+Changelog = "https://github.com/angelkenneth/pipef/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pipef"]
+
+[tool.hatch.build.targets.sdist]
+include = ["src", "tests", "README.md", "LICENSE.md", "CHANGELOG.md"]
 
 [dependency-groups]
 dev = [
@@ -15,7 +53,12 @@ dev = [
     "pre-commit>=4.6.1",
     "pylint>=4.0.6",
     "pytest>=8.4.2",
+    "tox>=4.21",
 ]
+
+# The library supports Python 3.9+, but the dev toolchain is resolved against the pinned interpreter only
+[tool.uv.dependency-groups]
+dev = { requires-python = ">=3.14" }
 
 [tool.poe]
 envfile = ".env"
@@ -23,6 +66,8 @@ envfile = ".env"
 [tool.pylint]
 ignore-paths = [
     ".idea/",
+    ".tox/",
+    ".venv/",
 ]
 disable = [
     "duplicate-code",
@@ -37,17 +82,37 @@ disable = [
     "too-many-positional-arguments",
 ]
 max-line-length = 120
+# Flags syntax and stdlib newer than the supported floor
+py-version = "3.7"
 
 # For Flake8 see: `.flake8`
 
 [tool.black]
 line-length = 120
+target-version = ["py37"]
 
 [tool.pytest.ini_options]
-testpaths = ["apps"]
+testpaths = ["tests"]
+
+# Interpreters come from asdf shims — see `.tool-versions`; absent ones are skipped, not failed
+# 3.7 is absent on purpose — it is covered by the `test-floor` task instead
+[tool.tox]
+requires = ["tox>=4.21"]
+env_list = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+skip_missing_interpreters = true
+
+[tool.tox.env_run_base]
+description = "Run the test suite against {base_python}"
+deps = ["pytest"]
+commands = [["pytest", { replace = "posargs", extend = true }]]
 
 [tool.commitizen]
 name = "cz_customize"
+version_provider = "pep621"
+version_files = ["src/pipef/__init__.py:__version__"]
+tag_format = "v$version"
+major_version_zero = true
+update_changelog_on_bump = true
 
 [tool.commitizen.customize]
 message_template = "{{prefix}}({{ticket}}): {{message}}"
@@ -55,6 +120,11 @@ example = "feature(ABC-123): added new color"
 schema = "<type>(<ticket>): <body>"
 schema_pattern = '^\w+\([A-Za-z]+-\d+(?: [A-Za-z]+-\d+)*\):\s*\S.*$'
 commit_parser = '^(?P<prefix>\w+)\((?P<ticket>[A-Za-z]+-\d+(?: [A-Za-z]+-\d+)*)\):\s*(?P<message>\S.*)$'
+bump_pattern = '^(feat|fix|perf|refactor)'
+bump_map = { feat = "MINOR", fix = "PATCH", perf = "PATCH", refactor = "PATCH" }
+bump_map_major_version_zero = { feat = "MINOR", fix = "PATCH", perf = "PATCH", refactor = "PATCH" }
+changelog_pattern = '^(feat|fix|perf|refactor)'
+change_type_map = { feat = "Added", fix = "Fixed", perf = "Performance", refactor = "Changed" }
 
 [[tool.commitizen.customize.questions]]
 type = "list"
@@ -87,7 +157,37 @@ pre-commit-install = "pre-commit install --hook-type commit-msg --hook-type pre-
 echo = "echo $GREETING"
 commit = "cz commit"
 test = "pytest"
-sample = "python -m apps.sample.main"
+bump = "cz bump"
+
+[tool.poe.tasks.clean]
+shell = "rm -rf dist"
+
+[tool.poe.tasks.build]
+sequence = [
+    {ref = "clean"},
+    {cmd = "uv build"},
+    {shell = "uvx twine check dist/*"},
+]
+
+# Uploads to PyPI with the token in `.env` (see `.env.example`)
+[tool.poe.tasks.publish]
+sequence = [
+    {ref = "build"},
+    {cmd = "uv publish"},
+]
+
+# tox cannot reach 3.7 — its interpreter probe uses 3.8+ syntax — so the floor is tested against the built wheel
+[tool.poe.tasks.test-floor]
+sequence = [
+    {ref = "build"},
+    {shell = "rm -rf .tox/floor && python3.7 -m venv .tox/floor && .tox/floor/bin/pip install -q dist/*.whl 'pytest<7.5' && .tox/floor/bin/python -m pytest"},
+]
+
+[tool.poe.tasks.test-all]
+sequence = [
+    {cmd = "tox"},
+    {ref = "test-floor"},
+]
 
 [tool.poe.tasks.cqa]
 sequence = [

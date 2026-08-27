@@ -13,6 +13,15 @@ div.document {
   padding: 30px;
 }
 
+pre,
+code {
+  background-color: #f7f3f0;
+}
+
+pre {
+  border: 1px dashed #d3baa5;
+}
+
 body::before {
   content: "";
   position: absolute;

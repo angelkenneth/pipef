@@ -3,3 +3,8 @@
 [build]
 command = "pip install uv && python3 -m uv sync && python3 -m uv run poe docs"
 publish = "docs/_build/html"
+
+[build.environment]
+# Picks up mise.netlify.toml instead of .tool-versions, so mise installs only the pinned interpreter
+# here rather than the full 3.8-3.14 matrix .tool-versions lists for local tox runs
+MISE_ENV = "netlify"

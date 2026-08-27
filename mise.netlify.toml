@@ -1,0 +1,5 @@
+# Netlify-only mise profile (see MISE_ENV in netlify.toml) — pins just the interpreter the docs
+# build needs, instead of the full 3.8-3.14 matrix .tool-versions lists for local tox runs
+
+[tools]
+python = "3.14"

@@ -115,7 +115,7 @@ git push --follow-tags
 2. We use [hatchling](https://hatch.pypa.io/latest/) as the build backend, distributing as a wheel + sdist
 3. We use [uv](https://docs.astral.sh/uv/) for dependency management and packaging
 4. We use [asdf](https://asdf-vm.com/) (via `.tool-versions`) to manage the Python interpreters across our
-   supported range
+   supported range. Though we use [mise](https://mise.jdx.dev/) just to narrow the version for our docs' Netlify builds
 5. We use [pytest](https://pytest.org/) for testing
 6. We use [tox](https://tox.wiki/) to run the suite across the whole supported Python range
 7. We use [poethepoet](https://poethepoet.natn.io/) (`poe`) as the task runner

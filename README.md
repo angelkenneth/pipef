@@ -131,6 +131,7 @@ git push --follow-tags
     [Alabaster theme](https://alabaster.readthedocs.io/) — the same PyPA-style layout used by
     [pipenv](https://pipenv.pypa.io/), [pip](https://pip.pypa.io/), and
     [virtualenv](https://virtualenv.pypa.io/) — and [MyST](https://myst-parser.readthedocs.io/)
+14. We use [Netlify](https://www.netlify.com/) to host the docs site
 
 ### Non-stack Decision
 

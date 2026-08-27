@@ -34,6 +34,10 @@ myst_heading_anchors = 3
 templates_path = ["_templates"]
 exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
+html_static_path = ["_static"]
+# SVG for modern browsers; falls back to the PNG twin below where SVG favicons aren't supported
+html_favicon = "_static/favicon.svg"
+
 # Matches the PyPA-style layout (pip, pipenv, virtualenv): Alabaster theme, right-hand sidebar
 html_theme = "alabaster"
 html_theme_options = {

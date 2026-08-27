@@ -3,6 +3,7 @@ extend-exclude =
     .idea/,
     .venv/,
     .tox/,
+    docs/conf.py,
 
 max-line-length = 120
 

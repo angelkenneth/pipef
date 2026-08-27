@@ -81,6 +81,19 @@ uv run poe cqa
 uv run poe commit
 ```
 
+## Docs
+
+The API docs site is built with Sphinx from `docs/` and the docstrings in `src/pipef/` — see Stack
+Decisions below
+
+```bash
+# Serve the docs locally with live reload at http://127.0.0.1:8000
+uv run poe docs-serve
+
+# Build the static site into docs/_build/html (warnings fail the build)
+uv run poe docs
+```
+
 ## Release
 
 Published from a local machine — set `UV_PUBLISH_TOKEN` in `.env` first (see `.env.example`)
@@ -114,6 +127,9 @@ git push --follow-tags
     drive version bumps and `CHANGELOG.md`
 12. We use [twine](https://twine.readthedocs.io/) to check the built distribution before it's uploaded to
     PyPI
+13. We use [Sphinx](https://www.sphinx-doc.org/) with the
+    [Read the Docs theme](https://sphinx-rtd-theme.readthedocs.io/) and
+    [MyST](https://myst-parser.readthedocs.io/)
 
 ### Non-stack Decision
 

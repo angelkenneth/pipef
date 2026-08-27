@@ -1,0 +1,2 @@
+````{include} ../COMPARISON.md
+````

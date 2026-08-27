@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "pipef-docs-serve",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "sphinx-autobuild", "docs", "docs/_build/html", "--port", "8123"],
+      "port": 8123
+    }
+  ]
+}

@@ -26,9 +26,13 @@ class pipef(metaclass=_PipefMeta):  # pylint: disable=invalid-name
     Only the bare class, never called, opens a lazy reusable chain — see USAGE.md for both modes
     """
 
+    #: Positional arguments held by an eager pipef, or empty for a lazy chain
     args: tuple[Any, ...]
+    #: Keyword arguments held by an eager pipef, or empty for a lazy chain
     kwargs: dict[str, Any]
+    #: The lazy chain's functions in application order, or empty while eager
     func_list: tuple[Callable[..., Any], ...]
+    #: True when this pipef holds a value to pipe eagerly, False for a lazy `|` chain
     eager: bool
 
     def __init__(self, *args: Any, **kwargs: Any) -> None:

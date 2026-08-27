@@ -49,10 +49,14 @@ dev = [
     "commitizen>=4.16.5",
     "flake8>=7.3.0",
     "mypy>=2.3.1",
+    "myst-parser>=4.0.1",
     "poethepoet>=0.48.0",
     "pre-commit>=4.6.1",
     "pylint>=4.0.6",
     "pytest>=8.4.2",
+    "sphinx>=8.2.3",
+    "sphinx-autobuild>=2024.10.3",
+    "sphinx-rtd-theme>=3.0.2",
     "tox>=4.21",
 ]
 
@@ -68,6 +72,7 @@ ignore-paths = [
     ".idea/",
     ".tox/",
     ".venv/",
+    "docs/conf.py",
 ]
 disable = [
     "duplicate-code",
@@ -195,3 +200,11 @@ sequence = [
     {cmd = "pre-commit run --all-files"},
     {cmd = "echo 'Code Quality Passed!'" }
 ]
+
+# Builds the Sphinx site into docs/_build/html (gitignored); -W turns warnings into errors
+[tool.poe.tasks.docs]
+cmd = "sphinx-build -b html -W docs docs/_build/html"
+
+# Serves the Sphinx site locally with live reload
+[tool.poe.tasks.docs-serve]
+cmd = "sphinx-autobuild docs docs/_build/html"

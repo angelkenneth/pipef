@@ -46,6 +46,7 @@ html_theme_options = {
     "show_powered_by": False,
     "show_related": False,
     "fixed_sidebar": True,
+    "extra_nav_links": {"Author's site": "https://www.aktolentino.com"},
 }
 html_sidebars = {
     "**": ["about.html", "navigation.html", "relations.html", "searchbox.html"],

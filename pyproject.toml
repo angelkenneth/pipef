@@ -32,6 +32,7 @@ Homepage = "https://github.com/angelkenneth/pipef"
 Repository = "https://github.com/angelkenneth/pipef"
 Issues = "https://github.com/angelkenneth/pipef/issues"
 Changelog = "https://github.com/angelkenneth/pipef/blob/main/CHANGELOG.md"
+Documentation = "https://pipef.aktolentino.com"
 
 [build-system]
 requires = ["hatchling>=1.27"]

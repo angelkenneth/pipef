@@ -3,6 +3,7 @@
 [![PyPI](https://img.shields.io/pypi/v/pipef.svg)](https://pypi.org/project/pipef/)
 [![Python](https://img.shields.io/pypi/pyversions/pipef.svg)](https://pypi.org/project/pipef/)
 [![License](https://img.shields.io/pypi/l/pipef.svg)](LICENSE.md)
+[![Docs](https://img.shields.io/badge/docs-pipef.aktolentino.com-blue.svg)](https://pipef.aktolentino.com)
 
 Function pipelines for Python — chain callables with `|`, lazily as a reusable function or eagerly through a value
 
@@ -83,8 +84,8 @@ uv run poe commit
 
 ## Docs
 
-The API docs site is built with Sphinx from `docs/` and the docstrings in `src/pipef/` — see Stack
-Decisions below
+Live at [pipef.aktolentino.com](https://pipef.aktolentino.com), built with Sphinx from `docs/` and the
+docstrings in `src/pipef/` — see Stack Decisions below
 
 ```bash
 # Serve the docs locally with live reload at http://127.0.0.1:8000

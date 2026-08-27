@@ -4,6 +4,7 @@
 [![Python](https://img.shields.io/pypi/pyversions/pipef.svg)](https://pypi.org/project/pipef/)
 [![License](https://img.shields.io/pypi/l/pipef.svg)](LICENSE.md)
 [![Docs](https://img.shields.io/badge/docs-pipef.aktolentino.com-blue.svg)](https://pipef.aktolentino.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d79df6ca-f5ba-459e-8988-a0b0ed4c8b4e/deploy-status)](https://app.netlify.com/projects/pipef/deploys)
 
 Function pipelines for Python — chain callables with `|`, lazily as a reusable function or eagerly through a value
 

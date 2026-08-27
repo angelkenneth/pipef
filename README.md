@@ -137,8 +137,6 @@ git push --follow-tags
 Decision that we might have tried but later reverted or explicitly avoided
 
 1. We dropped Python 3.7 support because tox's own interpreter probe requires 3.8+ syntax
-2. We moved off the Read the Docs theme in favor of Alabaster, to match the layout PyPA packaging
-   tools (pipenv, pip, virtualenv) already use
 
 ## References
 

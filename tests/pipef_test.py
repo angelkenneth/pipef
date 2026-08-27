@@ -95,9 +95,9 @@ def test_eager_with_no_args_yields_none():
     assert result is None
 
 
-def test_eager_kwargs_only_raises_instead_of_losing_the_value():
-    with pytest.raises(TypeError):
-        pipef.pipef(x=1)()
+def test_eager_kwargs_only_reads_as_none():
+    (result,) = pipef.pipef(x=1)
+    assert result is None
 
 
 def test_eager_is_not_hashable():

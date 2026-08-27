@@ -11,7 +11,7 @@ from pipef import pipef
 
 fn_1 = pipef | add_2 | mult_3
 fn_1(2)
-> 42
+> 12
 ```
 
 ### Forking
@@ -25,11 +25,11 @@ fn_1 = pipef | add_2 | mult_3
 fn_2 = fn_1 | add_2
 fn_3 = fn_1 | minus_3
 fn_2(2)
-> 44
+> 14
 fn_3(2)
-> 39
+> 9
 fn_1(2)
-> 42
+> 12
 ```
 
 ## Immediate Invocation
@@ -45,14 +45,14 @@ from pipef import pipef
 
 result, = pipef(2) | add_2 | mult_3
 result
-> 42
+> 12
 result_fn = pipef(2) | add_2 | mult_3
 result, = result_fn
 result
-> 42
+> 12
 result = result_fn()  # optional behaviour
 result
-> 42
+> 12
 ```
 
 ### With Kwargs
@@ -79,6 +79,29 @@ result
 > 3
 ```
 
+### Forking
+
+Piping further off an already-resolved result forks a new one without changing it
+
+```python
+from pipef import pipef
+
+result_fn = pipef(2) | add_2 | mult_3
+result_1, = result_fn | add_5
+result_1
+> 17
+result_2, = result_fn | minus_3
+result_2
+> 9
+result_0, = result_fn
+result_0
+> 12
+```
+
+## Edge Cases
+
+Behavior for the boundary inputs above, where a seed holds nothing, or only part of what was passed in
+
 ### On Its Own
 
 Left as is, with nothing piped in either, an empty `pipef()` simply holds `None`
@@ -90,21 +113,21 @@ pipef()
 > None
 ```
 
-### Forking
+### Reading Before Piping
 
-Piping further off an already-resolved result forks a new one without changing it
+Reading a seed before piping only exposes its first positional argument, leaving any other positional or
+keyword arguments held unused until you pipe them into a function
 
 ```python
 from pipef import pipef
 
-result_fn = pipef(2) | add_2 | mult_3
-result_1, = result_fn | add_5
-result_1
-> 47
-result_2, = result_fn | minus_3
-result_2
-> 39
-result_0, = result_fn
-result_0
-> 42
+result, = pipef(1, 2)
+result
+> 1
+result, = pipef(1, x=2)  # x=2 is held but unused here — pipe it into a function to consume it
+result
+> 1
+result, = pipef(x=2)  # a keyword-only seed falls back to None the same way an empty pipef() does
+result
+> None
 ```

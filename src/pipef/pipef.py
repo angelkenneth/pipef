@@ -58,8 +58,6 @@ class pipef(metaclass=_PipefMeta):  # pylint: disable=invalid-name
         """The single value this eager pipef is holding, or `None` when it was given nothing at all"""
         if self.args:
             return self.args[0]
-        if self.kwargs:
-            raise TypeError("this pipef only holds keyword arguments — pipe them into a function first")
         return None
 
     def __iter__(self) -> Iterator[Any]:

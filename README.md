@@ -36,7 +36,7 @@ from pipef import pipef
 
 fn = pipef | add_2 | mult_3
 fn(2)
-> 9
+> 12
 ```
 
 ## Why pipef

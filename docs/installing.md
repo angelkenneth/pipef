@@ -46,5 +46,5 @@ what changed between versions
 
 ## Next Steps
 
-Continue to [Quick Start](quickstart.md) for a first pipeline, or [Usage Guide](usage.md) for the
-full lazy/eager reference
+Continue to [Quick Start Guide](quickstart.md) for a first pipeline, or [Advanced Usage](usage.md)
+for the full lazy/eager reference

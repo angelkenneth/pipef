@@ -1,4 +1,4 @@
-# Usage
+# Advanced Usage
 
 Two ways to chain callables with `|`: build a reusable function lazily, or pipe a value through right away
 

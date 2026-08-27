@@ -56,8 +56,8 @@ fn(2)
 > 12
 ```
 
-See [Quick Start](quickstart.md) for a slightly longer walkthrough, [Usage Guide](usage.md) for the
-full lazy/eager reference, or [API Reference](api.md) for the generated class docs
+See [Quick Start Guide](quickstart.md) for a slightly longer walkthrough, [Advanced Usage](usage.md)
+for the full lazy/eager reference, or [API Reference](api.md) for the generated class docs
 
 ```{toctree}
 :maxdepth: 2

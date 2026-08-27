@@ -1,4 +1,4 @@
-# pipef Quick Start Guide
+# Quick Start Guide
 
 ## Installation
 
@@ -60,5 +60,5 @@ base(2)
 
 ## Next Steps
 
-[Usage Guide](usage.md) covers kwargs seeds, empty seeds, and the edge cases around reading a value
+[Advanced Usage](usage.md) covers kwargs seeds, empty seeds, and the edge cases around reading a value
 before piping it. [Comparison](comparison.md) lines pipef's syntax up against other piping libraries

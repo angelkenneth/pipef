@@ -11,7 +11,7 @@ a new immutable chain instead of mutating the old one
 
 Bare `pipef | f` opens a lazy chain — a reusable function that runs `f` (and anything piped after it)
 only once called. `pipef(x) | f`, any direct call including with no arguments, applies `f` right away
-against `x` and holds the result. See [Usage Guide](usage.md) for the full walkthrough
+against `x` and holds the result. See [Advanced Usage](usage.md) for the full walkthrough
 
 ## Usage
 

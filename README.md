@@ -95,6 +95,32 @@ uv run poe publish
 git push --follow-tags
 ```
 
+## Stack Decisions
+
+1. The library itself stays [dependency-free](https://pypi.org/project/pipef/#description) — runtime
+   dependencies need a deliberate decision, so we raise it before adding one
+2. We use [hatchling](https://hatch.pypa.io/latest/) as the build backend, distributing as a wheel + sdist
+3. We use [uv](https://docs.astral.sh/uv/) for dependency management and packaging
+4. We use [asdf](https://asdf-vm.com/) (via `.tool-versions`) to manage the Python interpreters across our
+   supported range
+5. We use [pytest](https://pytest.org/) for testing
+6. We use [tox](https://tox.wiki/) to run the suite across the whole supported Python range
+7. We use [poethepoet](https://poethepoet.natn.io/) (`poe`) as the task runner
+8. We use [mypy](https://mypy-lang.org/) in strict mode for type checking
+9. We use [pylint](https://pylint.pycqa.org/), [flake8](https://flake8.pycqa.org/), and
+   [black](https://black.readthedocs.io/) for CQA
+10. We use [pre-commit](https://pre-commit.com/) to run CQA on commit
+11. We use [Commitizen](https://commitizen-tools.github.io/commitizen/) to enforce conventional commits and
+    drive version bumps and `CHANGELOG.md`
+12. We use [twine](https://twine.readthedocs.io/) to check the built distribution before it's uploaded to
+    PyPI
+
+### Non-stack Decision
+
+Decision that we might have tried but later reverted or explicitly avoided
+
+1. We dropped Python 3.7 support because tox's own interpreter probe requires 3.8+ syntax
+
 ## References
 
 1. [.gitignore](https://www.toptal.com/developers/gitignore?templates=node,python,intellij+all,macos,visualstudiocode,windows)

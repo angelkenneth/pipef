@@ -3,6 +3,16 @@
 `pipef`: a small Python library published to PyPI that chains callables with `|` instead of nesting them.
 The package lives in `src/pipef/`; it is distributed as a wheel + sdist built by hatchling
 
+## Stack Decisions
+
+The "Stack Decisions" section in [README.md](README.md) is the source of truth for this repo's tooling and
+the reasoning behind it — read it before proposing a tooling change. Each entry is a deliberate choice,
+including reverted or avoided alternatives (the "Non-stack Decision" subsection); don't swap one out
+without raising it with the user first
+
+Keep that section current in the same change that alters it — adding, removing, or replacing a dependency
+or tool
+
 ## Dependencies
 
 The library itself stays dependency-free — runtime dependencies need a deliberate decision, so raise it

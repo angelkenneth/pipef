@@ -51,6 +51,11 @@ html_theme_options = {
     "show_related": False,
     "fixed_sidebar": True,
     "extra_nav_links": {"Author's site": "https://www.aktolentino.com"},
+    # Matches the "baby brown" accent (#C09D7F) from aktolentino.com, darkened for link contrast
+    "link": "#B28B6C",
+    "link_hover": "#8B6A4D",
+    "sidebar_link_underscore": "#C09D7F",
+    "anchor_hover_bg": "#F7F3F0",
 }
 html_sidebars = {
     "**": ["about.html", "navigation.html", "relations.html", "searchbox.html"],

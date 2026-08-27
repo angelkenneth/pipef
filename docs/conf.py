@@ -21,6 +21,7 @@ extensions = [
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
     "myst_parser",
+    "sphinx_copybutton",
 ]
 
 source_suffix = {

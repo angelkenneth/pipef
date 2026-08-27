@@ -146,6 +146,8 @@ git push --follow-tags
     [virtualenv](https://virtualenv.pypa.io/) — and [MyST](https://myst-parser.readthedocs.io/)
 14. We use [Netlify](https://www.netlify.com/) to host the docs site
 15. We use [Route 53](https://aws.amazon.com/route53/) to manage DNS for the docs' custom domain
+16. We use [sphinx-copybutton](https://sphinx-copybutton.readthedocs.io/) to add a copy icon to every code
+    block in the docs site
 
 ### Non-stack Decision
 

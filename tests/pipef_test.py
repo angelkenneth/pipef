@@ -56,7 +56,7 @@ def test_factory_composes_with_another_lazy_pipef():
 def test_factory_raises_on_unpack_instead_of_yielding_none():
     lazy = pipef.pipef | _add_2
     with pytest.raises(TypeError):
-        (result,) = lazy
+        tuple(lazy)
 
 
 def test_factory_forks_on_shared_lookups():

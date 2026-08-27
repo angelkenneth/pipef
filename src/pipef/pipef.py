@@ -61,6 +61,8 @@ class pipef(metaclass=_PipefMeta):  # pylint: disable=invalid-name
 
     def __iter__(self):
         """Yields the held value, so an eager result can be unpacked with `result, =`"""
+        if not self.eager:
+            raise TypeError("a lazy pipef chain can't be unpacked — call it with a value instead")
         yield self._value
 
     def __call__(self, *args, **kwargs):

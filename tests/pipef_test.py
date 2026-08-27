@@ -53,6 +53,12 @@ def test_factory_composes_with_another_lazy_pipef():
     assert fn(1) == (1 + 2) * 3 * 3 + 2
 
 
+def test_factory_raises_on_unpack_instead_of_yielding_none():
+    lazy = pipef.pipef | _add_2
+    with pytest.raises(TypeError):
+        (result,) = lazy
+
+
 def test_factory_forks_on_shared_lookups():
     get_bar = pipef.pipef | itemgetter("foo") | itemgetter("bar")
     a_dict = {"foo": {"bar": {"egg": 123}}}

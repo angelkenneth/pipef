@@ -11,6 +11,17 @@ body {
 div.document {
   margin-top: 0;
   padding: 30px;
+  /* Alabaster's mobile breakpoint sets width: 100% — without border-box this padding pushed the box past the viewport, causing horizontal scroll */
+  box-sizing: border-box;
+}
+
+/* Below Alabaster's own breakpoint, div.sphinxsidebar breaks out to the viewport edges via
+   negative margins sized for a padding-less div.document — restore that (Alabaster never
+   puts padding on div.document itself) or the sidebar sits inset in a band of header pattern */
+@media screen and (max-width: 940px) {
+  div.document {
+    padding: 0;
+  }
 }
 
 pre,

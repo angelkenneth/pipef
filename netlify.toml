@@ -8,3 +8,10 @@ publish = "docs/_build/html"
 # Picks up mise.netlify.toml instead of .tool-versions, so mise installs only the pinned interpreter
 # here rather than the full 3.8-3.14 matrix .tool-versions lists for local tox runs
 MISE_ENV = "netlify"
+
+# Force the default netlify.app subdomain to the custom domain — avoids duplicate-content SEO
+[[redirects]]
+from = "https://pipef.netlify.app/*"
+to = "https://pipef.aktolentino.com/:splat"
+status = 301
+force = true

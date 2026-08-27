@@ -1,5 +1,5 @@
 # Netlify build config for the Sphinx docs site — connect the repo in the Netlify dashboard to deploy
 
 [build]
-command = "pip install uv && uv sync && uv run poe docs"
+command = "pip install uv && python3 -m uv sync && python3 -m uv run poe docs"
 publish = "docs/_build/html"

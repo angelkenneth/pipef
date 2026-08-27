@@ -1,0 +1,4 @@
+/* Alabaster doesn't style a:visited, so browsers default it to purple, overriding the baby brown accent from conf.py */
+a:visited {
+    color: #B28B6C;
+}

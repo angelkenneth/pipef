@@ -37,6 +37,8 @@ exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 html_static_path = ["_static"]
 # SVG for modern browsers; falls back to the PNG twin below where SVG favicons aren't supported
 html_favicon = "_static/favicon.svg"
+# Pins a:visited to the theme's link color — Alabaster leaves it unstyled, so browsers default it to purple
+html_css_files = ["custom.css"]
 
 # Matches the PyPA-style layout (pip, pipenv, virtualenv): Alabaster theme, right-hand sidebar
 html_theme = "alabaster"
@@ -51,6 +53,8 @@ html_theme_options = {
     "show_related": False,
     "fixed_sidebar": True,
     "extra_nav_links": {"Author's site": "https://www.aktolentino.com"},
+    # Matches aktolentino.com's body text color, replacing Alabaster's default #3E4349
+    "body_text": "rgba(0, 0, 0, .87)",
     # Matches the "baby brown" accent (#C09D7F) from aktolentino.com, darkened for link contrast
     "link": "#B28B6C",
     "link_hover": "#8B6A4D",

@@ -9,9 +9,9 @@ from typing import Any, Callable, Iterator
 class _PipefMeta(type):
     """Lets a lazy chain start on the bare class, so `pipef | func` opens one without a call"""
 
-    def __or__(cls, func: Callable[..., Any]) -> pipef:
+    def __or__(cls, func: Callable[..., Any]) -> pipef:  # type: ignore[override]
         """Opens a lazy chain of `cls` and pipes `func` into it as the first step"""
-        self = cls.__new__(cls)
+        self = pipef.__new__(pipef)
         object.__setattr__(self, "args", ())
         object.__setattr__(self, "kwargs", {})
         object.__setattr__(self, "func_list", (func,))
@@ -51,7 +51,7 @@ class pipef(metaclass=_PipefMeta):  # pylint: disable=invalid-name
 
     # Frozen dataclasses hash by field value by default, but `kwargs` is a dict, so hashing would
     # always blow up anyway — disable it outright rather than let that leak through as a surprise
-    __hash__ = None
+    __hash__ = None  # type: ignore[assignment]
 
     @property
     def _value(self) -> Any:

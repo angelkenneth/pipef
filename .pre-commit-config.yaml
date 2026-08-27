@@ -23,6 +23,13 @@ repos:
             "-rn", # Only display messages
             "-sn", # Don't display the score
           ]
+      - id: mypy
+        name: mypy
+        entry: uv run mypy
+        language: system
+        types: [ python ]
+        pass_filenames: false
+        require_serial: true
   - repo: https://github.com/PyCQA/flake8
     rev: 7.3.0
     hooks:

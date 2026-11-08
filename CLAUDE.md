@@ -34,6 +34,15 @@ Shipped code must stay compatible with Python 3.8 — no builtin generics or `X 
 
 `pylint` enforces this via `py-version`, but it does not catch everything — `uv run poe test-all` does
 
+## Dogfooding
+
+This repo is `pipef`'s own home, so prefer `pipef` over nested calls when writing or editing Python here —
+scripts, examples, docs snippets, even tests where it doesn't fight the assertion style — wherever chaining
+reads more naturally than nesting
+
+Don't force it where a plain call or comprehension is clearer; this is about modeling idiomatic usage, not
+maximizing pipe count
+
 ## Testing
 
 Tests live in the top-level `tests/` package, named `<module>_test.py` after the module they cover

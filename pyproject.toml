@@ -2,7 +2,7 @@
 name = "pipef"
 version = "0.0.1"
 description = "Function pipelines for Python"
-readme = "README.md"
+readme = "PYPI.md"
 license = "MIT"
 license-files = ["LICENSE.md"]
 authors = [
@@ -42,7 +42,7 @@ build-backend = "hatchling.build"
 packages = ["src/pipef"]
 
 [tool.hatch.build.targets.sdist]
-include = ["src", "tests", "README.md", "LICENSE.md", "CHANGELOG.md"]
+include = ["src", "tests", "README.md", "PYPI.md", "LICENSE.md", "CHANGELOG.md"]
 
 [dependency-groups]
 dev = [

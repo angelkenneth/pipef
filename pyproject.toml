@@ -173,7 +173,6 @@ message = "Write a short and imperative summary of the code changes:\n"
 
 [tool.poe.tasks]
 pre-commit-install = "pre-commit install --hook-type commit-msg --hook-type pre-push --hook-type pre-commit"
-echo = "echo $GREETING"
 commit = "cz commit"
 test = "pytest"
 test-all = "tox"

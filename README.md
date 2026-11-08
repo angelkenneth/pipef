@@ -98,16 +98,11 @@ uv run poe docs
 
 ## Release
 
-Published from a local machine — set `UV_PUBLISH_TOKEN` in `.env` first (see `.env.example`)
+Published from a local machine — set `UV_PUBLISH_TOKEN` in `.env` first (see `.env.example`), then run the
+whole release in one shot. The manual steps and recovery notes are in [RELEASING.md](RELEASING.md)
 
 ```bash
-# Bump the version from the commit history, write CHANGELOG.md, and tag vX.Y.Z
-uv run poe bump
-
-# Build, twine-check, and upload to PyPI
-uv run poe publish
-
-git push --follow-tags
+scripts/release.sh
 ```
 
 ## Stack Decisions

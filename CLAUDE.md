@@ -55,8 +55,9 @@ via tox
 `pyproject.toml` is the single source of truth for the version; Commitizen mirrors it into
 `src/pipef/__init__.py` via `version_files` — never hand-edit either
 
-Release from a local machine: `uv run poe bump` (Commitizen) then `uv run poe publish`, which cleans `dist/`,
-builds, twine-checks, and uploads with the `UV_PUBLISH_TOKEN` in `.env`
+Release from a local machine with `scripts/release.sh`, which runs the steps in [RELEASING.md](RELEASING.md):
+`uv run poe bump` (Commitizen) then `uv run poe publish`, which cleans `dist/`, builds, twine-checks, and
+uploads with the `UV_PUBLISH_TOKEN` in `.env`. Keep the script and RELEASING.md in step when either changes
 
 ## Git
 
